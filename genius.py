@@ -19,10 +19,8 @@ class Genius:
         print(lyrics.get_text())
 
 
-#song = sys.stdin.read()
-URL = 'http://genius.com/Beyonce-sorry-lyrics'
-#print9 (song)
-#print ('hi')
+# URL = 'http://genius.com/Beyonce-sorry-lyrics'
+URL = sys.argv[1]
 lyrics = Genius(URL)
 
 if (not URL.find("http")):

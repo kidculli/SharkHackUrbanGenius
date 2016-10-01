@@ -3,14 +3,16 @@ const exec = require('child_process').exec;
 var test = "https://api.spotify.com/v1/search?q=Sorry&type=track&limit=1";
 
 
-function getLyrics() {
-    exec('python3 genius.py', (error, stdout, stderr) => {
+function getLyrics(lyric_url) {
+    exec('python3 genius.py ' + lyric_url, (error, stdout, stderr) => {
   if (error) {
     console.error(`exec error: ${error}`);
     return;
   }
   console.log(`stdout: ${stdout}`);
-  console.log(`stderr: ${stderr}`);
+  return stdout;
+//   console.log(`stdout: ${stdout}`);
+//   console.log(`stderr: ${stderr}`);
 });
     };
 
@@ -64,7 +66,7 @@ function getWikiDefine(query) {
     });
 }
 
-getLyrics();
+getLyrics('http://genius.com/Beyonce-sorry-lyrics');
 //getTrack("Sorry");
 // getWikiDefine(1);
 //getTrack2(2);
