@@ -1,28 +1,22 @@
 var Axios = require('axios')
-var PythonShell = require('python-shell');
-var pyshell = new PythonShell('genius.py');
+const exec = require('child_process').exec;
 var test = "https://api.spotify.com/v1/search?q=Sorry&type=track&limit=1";
 
 
 function getLyrics() {
-    pyshell.send('Hi Kody');
+    exec('python3 genius.py', (error, stdout, stderr) => {
+  if (error) {
+    console.error(`exec error: ${error}`);
+    return;
+  }
+  console.log(`stdout: ${stdout}`);
+  console.log(`stderr: ${stderr}`);
+});
+    };
 
-    pyshell.on('message', function (message) {
-        // received a message sent from the Python script (a simple "print" statement)
-        console.log(message);
-    });
-
-    // end the input stream and allow the process to exit
-    pyshell.end(function (err) {
-        if (err) throw err;
-        console.log('finished');
-    });
-    // PythonShell.run('genius.py')
-}
-
-function getTrackTest(query) {
-    Axios.get(test).then(res => { console.log(res.data.tracks.items[0]) });
-}
+// function getTrackTest(query) {
+//     Axios.get(test).then(res => { console.log(res.data.tracks.items[0]) });
+// }
 function getTrack(query) {
     var spotify_url = "https://api.spotify.com/v1/search";
     Axios.get(spotify_url, {
@@ -73,5 +67,4 @@ function getWikiDefine(query) {
 getLyrics();
 //getTrack("Sorry");
 // getWikiDefine(1);
-//getTrack2(2); 
-
+//getTrack2(2);
