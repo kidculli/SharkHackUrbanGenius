@@ -7,7 +7,7 @@ class Progress extends React.Component {
 
   render(){
     return(
-      <div>
+      <div className="progressCenter">
         <progress
            value={this.props.position}
            max="1"></progress>

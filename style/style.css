@@ -1,5 +1,6 @@
 .details {
   font-size: 1.2em !important;
+  text-align: center
 }
 .search-bar {
   margin: 20px;
@@ -109,12 +110,14 @@
     transition: all 0.15s linear;
 }
 progress {
-    margin-left: 30px;
     background: #555;
     color: #555;
     display: inline-block;
     width: 300px;
     height: 6px;
+}
+.progressCenter {
+  text-align: center;
 }
 progress[value]::-webkit-progress-value {
   background-color: beige;
@@ -143,10 +146,10 @@ progress[value]::-webkit-progress-value {
 
 .mainwrite {
     text-align: justify;
-    font-size: 9.5px;
+    font-size: 12px;
     font-family: calibri, sans-serif;
     color: #222;
-    line-height: 90%;
+    line-height: 180%;
     padding: 10px;
 }
 
@@ -177,7 +180,7 @@ progress[value]::-webkit-progress-value {
     text-shadow: 0px;
 }
 
-.mainwrite p:first-letter {
+.mainwrite p[type="upperc"]:first-letter {
     color: #fff;
     background-color: #ffd6da;
     padding: 10px;
@@ -242,7 +245,7 @@ progress[value]::-webkit-progress-value {
     text-shadow: 0px;
 }
 
-.mainwrite1 p:first-letter {
+.mainwrite1 p[type="upperc"]:first-letter {
     color: #ffd6da;
     /*color: #fff;*/
     /*background-color: #ffd6da;*/
@@ -429,23 +432,43 @@ input[type="text"] {
 }*/
 input { font-family: 'FontAwesome'; }
 input[type="text"]:focus {
-  width: 370px;
+  /*width: 370px;
   height: 29px;
   z-index: 1;
   box-sizing: border-box;
   border: 4px solid #FFFFFF;
   right: 30px;
-  background: whitesmoke;
+  background: whitesmoke;*/
+  font-family: 'Roboto',arial,'Noto Sans Japanese',sans-serif;
   opacity: 0.8;
-  /*border-bottom: 1px solid;*/
   cursor: text;
+  z-index: 1;
+  position: absolute;
+    right: 30px;
+    /*bottom: 230px;*/
+    outline: none;
+    padding: 8px;
+    background: #eee;
+    display: inline-block;
+    border: 0;
+    vertical-align: top;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+    height: 29px;
+    width: 370px;
+    -webkit-transition: width 0.65s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    -moz-transition: width 0.65s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: width 0.65s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 input[type="submit"]:before {
   content:"\e003";
 }
 input[type="submit"] {
+  outline: none;
   height: 23px;
-  width: 63px;
+  width: 125px;
   display: inline-block;
   color:red;
   float: right;
@@ -468,4 +491,30 @@ input[type="submit"]:hover {
 }
 .searchLabel {
   content: "tetagjlkl";
+}
+p > .lyrics {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 16px;
+    font-family: 'Roboto',arial,'Noto Sans Japanese',sans-serif;
+}
+.SearchBar input {
+    position: absolute;
+    right: 55px;
+    bottom: 240px;
+    outline: none;
+    padding: 8px;
+    background: #eee;
+    display: inline-block;
+    border: 0;
+    vertical-align: top;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+    height: 20px;
+    width: 100px;
+    -webkit-transition: width 0.65s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    -moz-transition: width 0.65s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: width 0.65s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }

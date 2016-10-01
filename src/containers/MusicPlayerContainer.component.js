@@ -132,6 +132,7 @@ class MusicPlayerContainer extends React.Component {
         <div>
           <img className="coverImage" src={this.xlArtwork(this.state.track.artwork_url)} />
         </div>
+        <br />
         <Details
           title={this.state.track.title}/>
         <Sound
