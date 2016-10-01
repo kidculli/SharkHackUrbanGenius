@@ -25,6 +25,7 @@ class SearchBar extends Component{
                  id="search" name="search" type="text" placeholder="Search..." />
               <input id="search_submit" value="&#61447;" type="submit" />
             </form>
+          
           </div>
       // </div>
       
@@ -35,10 +36,15 @@ class SearchBar extends Component{
     this.setState({term: term});
 
     // Remember this is the from the parent component
-    this.props.onSearchTermChange(term)
+    //this.props.onSearchTermChange(term)
+  }
+  clickFind() {
+    //this.props.onSearchTermChange(this.state.term);
+    console.log(this.state.term);
   }
 }
 
 export default SearchBar;
 //<input value={this.state.term} onChange={ (event) => this.onInputChange(event.target.value) } />
 //<input id="search_submit" value="Search" type="submit" placeholder="Hi" />
+//<button onClick={this.clickFind}>Find</button>

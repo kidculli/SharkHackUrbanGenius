@@ -27,6 +27,11 @@ class Player extends React.Component {
                   <i className="fa fa-play play"></i>
                 </span>
               </td>
+              <td>
+                <span onClick={this.props.togglePlay}>
+                  <i className="fa fa-stop forward"></i>
+                </span>
+              </td>
 					    <td>
                 <span onClick={this.props.forward}>
                   <i className="fa fa-step-forward forward"></i>

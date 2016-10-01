@@ -4,6 +4,13 @@ import lyricDetail from '../components/Lyrics/lyricDetail.component';
 // let exec = require('child_process').exec;
 
 class LyricsContainer extends React.Component {
+    constructor(probs) {
+        super (probs);
+        this.state = {
+            showResult: false
+        }
+
+    }
     getGeniusURL(query) {
     var api = 'https://api.genius.com/search';
     Axios.get(api, {
@@ -82,6 +89,9 @@ class LyricsContainer extends React.Component {
                         </p>
                         <div className="SearchBar">
                             <input type="text1" />
+                        </div>
+                        <div className="definition">
+                            {this}
                         </div>
                     </div>
                 </div>
