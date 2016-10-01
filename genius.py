@@ -14,12 +14,18 @@ class Genius:
         self.soup = BeautifulSoup(self.html_source, 'html.parser')
 
     def get_lyrics(self):
+        bad = 'googletag'
         lyrics = self.soup.find('div','song_body-lyrics')
         message = lyrics.get_text()
-        print(lyrics.get_text())
+        for item in message.split('\n'):
+            if (bad in item):
+                strip = (item.strip()[0:91])
+        print(message.replace(strip,'\n'))
 
 
-# URL = 'http://genius.com/Beyonce-sorry-lyrics'
+
+
+#URL = 'http://genius.com/Beyonce-sorry-lyrics'
 URL = sys.argv[1]
 lyrics = Genius(URL)
 
