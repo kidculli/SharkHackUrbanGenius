@@ -64,3 +64,35 @@
     z-index: 10;
     transition: all 0.3s ease-in;
 }
+.player {
+    background: none;
+    text-align: center;
+    font-family: FontAwesome;
+    color: #fff;
+    font-size: 26px;
+    line-height: 26px;
+    width: 216px;
+    height: 35px;
+    position: absolute;
+    bottom: 40px;
+    left: 48%;
+    transform: translate(-50%, 0);
+    z-index: 10;
+    transition: all 0.3s ease-in;
+    border-spacing: 0;
+}
+.backward {
+    color: black;
+    cursor: pointer;
+    transition: all 0.15s linear;
+}
+.play {
+    color: black;
+    cursor: pointer;
+    transition: all 0.15s linear;
+}
+.forward {
+    color: black;
+    cursor: pointer;
+    transition: all 0.15s linear;
+}

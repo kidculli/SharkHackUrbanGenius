@@ -128,7 +128,7 @@ class MusicPlayerContainer extends React.Component {
   render () {
     const scotchStyle = {
       width: '360px',
-      height: '500px'
+      height: '550px'
     }
     return (
       <div className="screen" style={scotchStyle}>
