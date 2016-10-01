@@ -20,10 +20,10 @@ class SearchBar extends Component{
       // <div className="search-bar">
           <div id="wrap">
             <form action="" autoComplete="on">
-              <input id="search" name="search" type="text" placeholder="What're we looking for ?" />
-              <label className="searchLabel" htmlFor="_search">
-              </label>
-              <input id="search_submit" value="Search" type="submit" placeholder="Hi" />
+              <input 
+                 value={this.state.term} onChange={ (event) => this.onInputChange(event.target.value) }
+                 id="search" name="search" type="text" placeholder="Search..." />
+              <input id="search_submit" value="&#61447;" type="submit" />
             </form>
           </div>
       // </div>
@@ -41,3 +41,4 @@ class SearchBar extends Component{
 
 export default SearchBar;
 //<input value={this.state.term} onChange={ (event) => this.onInputChange(event.target.value) } />
+//<input id="search_submit" value="Search" type="submit" placeholder="Hi" />

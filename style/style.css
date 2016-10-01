@@ -388,8 +388,8 @@ progress[value]::-webkit-progress-value {
 }*/
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
 @import url(https://raw.github.com/FortAwesome/Font-Awesome/master/docs/assets/css/font-awesome.min.css);
-/*@import url(http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css);
-.glyphicon-search:before{content:"\e003";}*/
+@import url(http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css);
+
 body {
 	background: #DDD;
 	font-size: 15px;
@@ -447,8 +447,9 @@ input[type="submit"] {
   display: inline-block;
   color:red;
   float: right;
-  background: url(./search.png) center center no-repeat;
-  text-indent: -10000px;
+  /*background: url(./search.png) center center no-repeat;*/
+  /*text-indent: -10000px;*/
+  background: transparent;
   border: none;
   position: absolute;
   top: 4px;
