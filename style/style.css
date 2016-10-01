@@ -134,7 +134,12 @@ progress[value]::-webkit-progress-value {
   width: 900px;
   left: 30%;
 }
-.ovcont {padding: 10px; background-color: #fff; height: 175px; overflow: auto;}
+.ovcont {
+    padding: 10px;
+    background-color: whitesmoke;
+    height: 300px;
+    overflow: auto;
+}
 
 .mainwrite {
     text-align: justify;
@@ -195,5 +200,272 @@ progress[value]::-webkit-progress-value {
 #lauzcont {
     background-color: #ffd6da;
     width: 400px;
-    height: 400px;
+    height: 600px;
+}
+.primaryColor {
+  background-color: #ffd6da;
+}
+.mainwrite1 {
+    text-align: justify;
+    font-size: 9.5px;
+    font-family: calibri, sans-serif;
+    color: #222;
+    line-height: 90%;
+    padding: 10px;
+}
+
+.mainwrite1 b {
+    margin: 5px;
+    color: #ffd6da;
+    text-transform: uppercase;
+    font-size: 20px;
+    text-shadow: 1px 1px white, 2px 2px black;
+}
+
+.mainwrite1 a {
+    color: #222;
+    font-family: roboto condensed;
+    font-size: 7px;
+    letter-spacing: 2px;
+    font-style: italic;
+    text-transform: uppercase;
+    transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -webkit-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+}
+
+.mainwrite1 a:hover {
+    /*color: #ffd6da;*/
+    color: whitesmoke;
+    text-shadow: 0px;
+}
+
+.mainwrite1 p:first-letter {
+    color: #ffd6da;
+    /*color: #fff;*/
+    /*background-color: #ffd6da;*/
+    background-color: whitesmoke;
+    padding: 10px;
+    margin: 5px 5px 1px 5px;
+    font-family: satisfy;
+    font-size: 20px;
+    text-transform: lowercase;
+    float: left;
+    text-shadow: 1px 1px 0px #222;
+}
+
+#content {
+  position: absolute;
+  height: 50px;
+  width: 300px;
+  margin-left: 170px;
+  top: 35px;
+  margin-left: 90%;
+}
+#content.on {
+  -webkit-animation-name: in-out;
+  animation-name: in-out;
+  -webkit-animation-duration: 0.7s;
+  animation-duration: 0.7s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+/*input {
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  border: 4px solid #FFFFFF;
+  border-radius: 50% !important;
+  background: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: Roboto;
+  outline: 0;
+  -webkit-transition: width 0.4s ease-in-out, border-radius 0.8s ease-in-out, padding 0.2s;
+  transition: width 0.4s ease-in-out, border-radius 0.8s ease-in-out, padding 0.2s;
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+  -webkit-transform: translate(-100%, -50%);
+  -ms-transform: translate(-100%, -50%);
+  transform: translate(-100%, -50%);
+}*/
+/*.search {
+  background: none;
+  position: absolute;
+  top: -10px;
+  left: -15px;
+  height: 20px;
+  width: 20px;
+  padding: 0;
+  border-radius: 100%;
+  outline: 0;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  -webkit-transform: translate(-100%, -50%);
+  -ms-transform: translate(-100%, -50%);
+  transform: translate(-100%, -50%);
+}
+
+.search:before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 4px;
+  background-color: #fff;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  margin-top: 26px;
+  margin-left: 17px;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.close {
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+}
+
+.close:before {
+  content: "";
+  position: absolute;
+  width: 27px;
+  height: 4px;
+  margin-top: -1px;
+  margin-left: -13px;
+  background-color: #fff;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.close:after {
+  content: "";
+  position: absolute;
+  width: 27px;
+  height: 4px;
+  background-color: #fff;
+  margin-top: -1px;
+  margin-left: -13px;
+  cursor: pointer;
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.square {
+  box-sizing: border-box;
+  padding: 0 40px 0 10px;
+  width: 300px;
+  height: 50px;
+  border: 4px solid #FFFFFF;
+  border-radius: 0;
+  background: none;
+  color: #fff;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  outline: 0;
+  -webkit-transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out, padding 0.2s;
+  transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out, padding 0.2s;
+  -webkit-transition-delay: 0.4s, 0s, 0.4s;
+  transition-delay: 0.4s, 0s, 0.4s;
+  -webkit-transform: translate(-100%, -50%);
+  -ms-transform: translate(-100%, -50%);
+  transform: translate(-100%, -50%);
+}*/
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+@import url(https://raw.github.com/FortAwesome/Font-Awesome/master/docs/assets/css/font-awesome.min.css);
+@import url(http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css);
+
+body {
+	background: #DDD;
+	font-size: 15px;
+}
+#wrap {
+  /*margin: 50px 100px;*/
+  display: inline-block;
+  height: 60px;
+  float: right;
+  padding: 0;
+  position: relative;
+}
+
+input[type="text"] {
+  height: 20px;
+  font-size: 14px;
+  display: inline-block;
+  font-family: "Lato";
+  font-weight: 100;
+  border: none;
+  outline: none;
+  color: #555;
+  padding: 3px;
+  padding-right: 60px;
+  width: 0px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  z-index: 3;
+  transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
+  cursor: pointer;
+}
+
+/*input[type="text"]:focus:hover {
+  border-bottom: 1px solid #BBB;
+}*/
+input { font-family: 'FontAwesome'; }
+input[type="text"]:focus {
+  width: 370px;
+  height: 29px;
+  z-index: 1;
+  box-sizing: border-box;
+  border: 4px solid #FFFFFF;
+  right: 30px;
+  background: whitesmoke;
+  opacity: 0.8;
+  /*border-bottom: 1px solid;*/
+  cursor: text;
+}
+input[type="submit"]:before {
+  content:"\e003";
+}
+input[type="submit"] {
+  height: 23px;
+  width: 63px;
+  display: inline-block;
+  color:red;
+  float: right;
+  background: url(./search.png) center center no-repeat;
+  text-indent: -10000px;
+  /*background: transparent;*/
+  border: none;
+  position: absolute;
+  top: 4px;
+  right: -15px;
+  z-index: 2;
+  cursor: pointer;
+  opacity: 0.4;
+  cursor: pointer;
+  transition: opacity .4s ease;
+}
+
+input[type="submit"]:hover {
+  opacity: 0.8;
+}
+.searchLabel {
+  content: "tetagjlkl";
 }
