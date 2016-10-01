@@ -19,7 +19,7 @@ class SearchBar extends Component{
     return (
       // <div className="search-bar">
           <div id="wrap">
-            <form action="" autoComplete="on">
+            <form action="" autoComplete="on" onSubmit={this.submit}>
               <input 
                  value={this.state.term} onChange={ (event) => this.onInputChange(event.target.value) }
                  id="search" name="search" type="text" placeholder="Search..." />
@@ -31,7 +31,9 @@ class SearchBar extends Component{
       
     );
   }
-
+  submit(e) {
+    e.preventDefault();
+  }
   onInputChange(term){
     this.setState({term: term});
 

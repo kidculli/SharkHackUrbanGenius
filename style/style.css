@@ -202,7 +202,7 @@ progress[value]::-webkit-progress-value {
 }
 #lauzcont {
     background-color: #ffd6da;
-    width: 400px;
+    width: 420px;
     height: 600px;
 }
 .primaryColor {
@@ -229,7 +229,7 @@ progress[value]::-webkit-progress-value {
 .mainwrite1 a {
     color: #222;
     font-family: roboto condensed;
-    font-size: 14px;
+    font-size: 11px;
     letter-spacing: 3px;
     font-style: italic;
     text-transform: uppercase;
@@ -252,14 +252,18 @@ progress[value]::-webkit-progress-value {
     /*background-color: #ffd6da;*/
     background-color: whitesmoke;
     padding: 10px;
-    margin: 5px 5px 1px 5px;
+    margin: -2px 5px 1px 5px;
     font-family: satisfy;
-    font-size: 35px;
-    text-transform: lowercase;
+    font-size: 32px;
+    text-transform: uppercase;
     float: left;
     text-shadow: 1px 1px 0px #222;
 }
-
+.lauzti1 {
+    margin-bottom: 3px;
+    color: black;
+    text-shadow: 1px 1px 0px white, 2px 2px 0px #d6daff;
+}
 #content {
   position: absolute;
   height: 50px;
@@ -522,7 +526,7 @@ p > .lyrics {
 .searchBtn {
     position: relative;
     left: 312px;
-    top: -15px;
+    top: -17px;
     cursor: pointer;
 }
 .definition {

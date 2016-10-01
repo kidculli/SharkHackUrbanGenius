@@ -14,7 +14,7 @@ class AppContainer extends React.Component {
      onChildChanged(newState) {
         //  alert(newState);
          this.setState({song:newState});
-         console.log(this.state.song);
+         console.log("JGHLJGAHGLAJHGDLFJKGH", newState);
          //alert(this.setState({song:newState}));
         //this.setState({lyric: newState });
         //alert(this.state.lyric);

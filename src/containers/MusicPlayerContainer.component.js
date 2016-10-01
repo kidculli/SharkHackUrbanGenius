@@ -24,7 +24,7 @@ class MusicPlayerContainer extends React.Component {
        position: 0,
        playFromPosition: 0,
        autoCompleteValue: '',
-       term: 'Closer'
+       term: 'Know yourself'
      };
    }
 
@@ -92,7 +92,7 @@ class MusicPlayerContainer extends React.Component {
   getTrack(term){
 
     if(term === ''){
-      term = 'Closer';
+      term = 'Know yourself';
     }
 
     Axios.get(api_url,{
@@ -117,7 +117,7 @@ class MusicPlayerContainer extends React.Component {
 
       searchTerm(term){
         if (term == ''){
-          this.setState({term: 'Closer'})
+          this.setState({term: 'Know yourself'})
         }else{
           this.setState({term: term});
         }
