@@ -21,9 +21,14 @@
     "babel-preset-stage-1": "^6.16.0",
     "lodash": "^4.16.2",
     "react": "^15.3.2",
+    "react-sound": "^0.4.0",
+    "classnames": "^2.2.3",
+    "react-autocomplete": "^1.0.0-rc2",
+    "axios": "^0.9.1",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
     "redux": "^3.6.0",
-    "youtube-api-search": "0.0.5"
+    "youtube-api-search": "0.0.5",
+    "soundmanager2": "^2.97.20150601-a"
   }
 }

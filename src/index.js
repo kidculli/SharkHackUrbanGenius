@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/app';
+import AppContainer from './containers/AppContainer.component';
 
 /* Create a new component. This component should produce some HTML*/
 class Index extends Component {
@@ -13,7 +13,7 @@ class Index extends Component {
   render(){
 
     return (
-      <App />
+      <AppContainer />
 
     )
   }
