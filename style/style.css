@@ -213,7 +213,8 @@ progress[value]::-webkit-progress-value {
     font-size: 9.5px;
     font-family: calibri, sans-serif;
     color: #222;
-    line-height: 90%;
+    /*line-height: 90%;*/
+    line-height: 120%;
     padding: 10px;
 }
 
@@ -228,8 +229,8 @@ progress[value]::-webkit-progress-value {
 .mainwrite1 a {
     color: #222;
     font-family: roboto condensed;
-    font-size: 7px;
-    letter-spacing: 2px;
+    font-size: 14px;
+    letter-spacing: 3px;
     font-style: italic;
     text-transform: uppercase;
     transition: all 1s ease-in-out;
@@ -253,7 +254,7 @@ progress[value]::-webkit-progress-value {
     padding: 10px;
     margin: 5px 5px 1px 5px;
     font-family: satisfy;
-    font-size: 20px;
+    font-size: 35px;
     text-transform: lowercase;
     float: left;
     text-shadow: 1px 1px 0px #222;
@@ -517,4 +518,13 @@ p > .lyrics {
     -webkit-transition: width 0.65s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     -moz-transition: width 0.65s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     transition: width 0.65s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.searchBtn {
+    position: relative;
+    left: 312px;
+    top: -15px;
+    cursor: pointer;
+}
+.definition {
+  font-size: 16px;
 }

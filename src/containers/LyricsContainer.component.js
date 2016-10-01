@@ -31,7 +31,7 @@ class LyricsContainer extends React.Component {
             let definition = res.data.list[0].definition;
             let example = res.data.list[0].example;
             
-            this.setState({example: example, definition: definition});
+            this.setState({example: example, definition: definition, showResult: true});
 
         })}
 
@@ -78,10 +78,19 @@ class LyricsContainer extends React.Component {
                         <div className="SearchBar">
                             <input type="text1" value={this.state.searchInput} onChange={(event) => {this.setState({searchInput: event.target.value})}} />
                         </div>
-                        <button onClick={this.searchString.bind(this)}>Search</button>
-                        <div className="definition">
-                            {this.state.definition}
+                        <span className="searchBtn" onClick={this.searchString.bind(this)}>
+                            <i className="fa fa-search"></i>
+                        </span>
+                        <div>
                             <br />
+                            <br />
+                            <p className="lyrics definition">{ this.state.showResult? "Definition": ""}</p>
+                            {this.state.definition}
+                        </div>
+                        <br />
+                        <br />
+                        <div>
+                            <p className="lyrics definition">{ this.state.showResult? "Example": ""}</p>
                             {this.state.example}
                         </div>
                     </div>
