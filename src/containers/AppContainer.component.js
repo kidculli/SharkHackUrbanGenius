@@ -6,12 +6,25 @@ import DefinitionsContainer from './DefinitionsContainer.component';
 import LyricsContainer from './LyricsContainer.component';
 
 class AppContainer extends React.Component {
+    constructor(){
+        super();
+        this.state={song:''};
+    }
+
+     onChildChanged(newState) {
+        //  alert(newState);
+         this.setState({song:newState});
+         console.log(this.state.song);
+         //alert(this.setState({song:newState}));
+        //this.setState({lyric: newState });
+        //alert(this.state.lyric);
+    }
     render() {
         return(
             <div className="row containerSize">
-                <div className="col-md-6"><MusicPlayerContainer /></div>
+                <div className="col-md-6"><MusicPlayerContainer  callback={this.onChildChanged.bind(this)}/></div>
                 <div className="col-md-6 screen2">
-                    <LyricsContainer />
+                    <LyricsContainer song={this.state.song} />
                 </div>
             </div>
         );

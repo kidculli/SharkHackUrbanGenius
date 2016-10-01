@@ -1,5 +1,5 @@
 var Axios = require('axios')
-const exec = require('child_process').exec;
+// const exec = require('child_process').exec;
 var test = "https://api.spotify.com/v1/search?q=Sorry&type=track&limit=1";
 
 function getUrbanDefine(query) {
@@ -38,7 +38,7 @@ function getGeniusURL(query) {
 }
 
 function getLyrics(lyric_url) {
-    exec('python3 genius.py ' + lyric_url, (error, stdout, stderr) => {
+    Exec.exec('python3 genius.py ' + lyric_url, (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`);
             return;

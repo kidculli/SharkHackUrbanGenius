@@ -154,6 +154,7 @@ class MusicPlayerContainer extends React.Component {
         }else{
           this.setState({term: term});
         }
+        this.props.callback(this.state.term);
         console.log("term", this.state.term);
         this.getTrack();
 
