@@ -435,6 +435,8 @@ input[type="text"]:focus {
   box-sizing: border-box;
   border: 4px solid #FFFFFF;
   right: 30px;
+  background: whitesmoke;
+  opacity: 0.8;
   /*border-bottom: 1px solid;*/
   cursor: text;
 }
@@ -447,9 +449,9 @@ input[type="submit"] {
   display: inline-block;
   color:red;
   float: right;
-  /*background: url(./search.png) center center no-repeat;*/
-  /*text-indent: -10000px;*/
-  background: transparent;
+  background: url(./search.png) center center no-repeat;
+  text-indent: -10000px;
+  /*background: transparent;*/
   border: none;
   position: absolute;
   top: 4px;
