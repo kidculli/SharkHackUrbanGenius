@@ -116,8 +116,13 @@ class MusicPlayerContainer extends React.Component {
       }
 
       searchTerm(term){
-        this.setState({term: term});
-        console.log('term: ', this.state.term);
+        if (term == ''){
+          this.setState({term: 'Closer'})
+        }else{
+          this.setState({term: term});
+        }
+        this.props.callback(this.state.term);
+        console.log("term", this.state.term);
         this.getTrack(term);
       }
 

@@ -1,10 +1,48 @@
 import React from 'react';
-
+import Axios from 'axios';
 import lyricDetail from '../components/Lyrics/lyricDetail.component';
+// let exec = require('child_process').exec;
 
 class LyricsContainer extends React.Component {
+    getGeniusURL(query) {
+    var api = 'https://api.genius.com/search';
+    Axios.get(api, {
+        params: {
+            q: query
+        },
+        headers: {
+            // 'Access-Control-Allow-Credentials': false,
+            // 'Access-Control-Allow-Origin': '*',
+            // 'CF-RAY': '2eae8e7c5ca75a68-BOS',
+            Authorization: 'Bearer ckMZIuDpxq3hQD-cyGk3Hf0WlK2Nx_iA-TttNy1Yu37TKWbHswUIQ2NfNkgLOnRd'
+        }
+    }).then((res, err) => {
+        var url = res.data.response.hits[0].result.url
+        console.log(url);
+        return url;
+    })
+}
+   getLyrics() {
+    var lyric_url = this.getGeniusURL(this.props.song);
+    Exec.exec('python3 genius.py ' + lyric_url, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`exec error: ${error}`);
+            return;
+        }
+        console.log(`stdout: ${stdout}`);
+        return stdout;
+        //   console.log(`stdout: ${stdout}`);
+        //   console.log(`stderr: ${stderr}`);
+    });
+};
+
+// componentWillReceiveProps(nextProps){
+
+// }
+
     render() {
         return(
+            // <p>{this.getLyrics()}</p>
             <div id="lauzcont">
                 <div className="ovcont">
                     <div className="mainwrite">
