@@ -19,5 +19,8 @@ class Genius:
 
 lyrics = Genius()
 
-lyrics.get_URL('http://' + 'genius.com/Justin-bieber-sorry-lyrics')
+if (!(URL.find("http"))):
+    lyrics.get_URL('http://' + URL)
+else:
+    lyrics.get_URL(URL)
 lyrics.get_lyrics()
