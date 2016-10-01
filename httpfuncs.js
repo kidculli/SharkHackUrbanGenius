@@ -14,7 +14,7 @@ function getUrbanDefine(query) {
     }).then((res, err) => {
         var definition = res.data.list[0].definition;
         var example = res.data.list[0].example;
-        object = {definition, example};
+        object = {definition : definition, example : example};
         return object;
     })}
 
