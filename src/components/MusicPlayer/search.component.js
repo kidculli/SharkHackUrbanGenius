@@ -13,16 +13,21 @@ class SearchBar extends Component{
   constructor(props){
     super(props); // going to throw an error if you don't call super
 
-    this.state = { term: '' };
+    this.state = { }
   }
-
   render(){
     return (
-      <div className="search-bar">
-        <input
-          value={this.state.term}
-          onChange={ (event) => this.onInputChange(event.target.value) } />
-      </div>
+      // <div className="search-bar">
+          <div id="wrap">
+            <form action="" autoComplete="on">
+              <input id="search" name="search" type="text" placeholder="What're we looking for ?" />
+              <label className="searchLabel" htmlFor="_search">
+              </label>
+              <input id="search_submit" value="Search" type="submit" placeholder="Hi" />
+            </form>
+          </div>
+      // </div>
+      
     );
   }
 
@@ -35,3 +40,4 @@ class SearchBar extends Component{
 }
 
 export default SearchBar;
+//<input value={this.state.term} onChange={ (event) => this.onInputChange(event.target.value) } />
