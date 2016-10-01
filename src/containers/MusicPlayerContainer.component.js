@@ -131,9 +131,9 @@ class MusicPlayerContainer extends React.Component {
       height: '550px'
     }
     return (
-      <div className="screen" style={scotchStyle}>
+      <div className="screen">
         <Search />
-        <div className="coverImage">
+        <div>
           <img className="coverImage" src={this.xlArtwork(this.state.track.artwork_url)} />
         </div>
         <Details
