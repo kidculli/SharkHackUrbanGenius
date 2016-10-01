@@ -133,7 +133,7 @@ class MusicPlayerContainer extends React.Component {
     }
     return (
       <div className="screen">
-        <Search onSearchTermChange={this.searchTerm.bind(this)}/>
+        <Search onEnterTermChange={this.getTrack.bind(this)}/>
         <div>
           <img className="coverImage" src={this.xlArtwork(this.state.track.artwork_url)} />
         </div>

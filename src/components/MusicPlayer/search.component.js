@@ -15,13 +15,18 @@ class SearchBar extends Component{
 
     this.state = { }
   }
+  _handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      this.setState({term:e.target.value});
+      this.props.onEnterTermChange(e.target.value);
+    }
+  }
   render(){
     return (
       // <div className="search-bar">
           <div id="wrap">
             <form action="" autoComplete="on" onSubmit={this.submit}>
-              <input 
-                 value={this.state.term} onChange={ (event) => this.onInputChange(event.target.value) }
+              <input onKeyUp={this._handleKeyPress.bind(this)}
                  id="search" name="search" type="text" placeholder="Search..." />
               <input id="search_submit" value="&#xf002;" type="submit" />
             </form>
@@ -33,16 +38,6 @@ class SearchBar extends Component{
   }
   submit(e) {
     e.preventDefault();
-  }
-  onInputChange(term){
-    this.setState({term: term});
-
-    // Remember this is the from the parent component
-    this.props.onSearchTermChange(term)
-  }
-  clickFind() {
-    //this.props.onSearchTermChange(this.state.term);
-    console.log(this.state.term);
   }
 }
 
