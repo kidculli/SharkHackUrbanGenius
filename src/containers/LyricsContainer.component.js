@@ -7,45 +7,33 @@ class LyricsContainer extends React.Component {
     constructor(probs) {
         super (probs);
         this.state = {
-            showResult: false
+            showResult: false,
+            searchInput: '',
+
+            example: '',
+            definition: ''
         }
 
     }
-    getGeniusURL(query) {
-    var api = 'https://api.genius.com/search';
-    Axios.get(api, {
-        params: {
-            q: query
-        },
-        headers: {
-            // 'Access-Control-Allow-Credentials': false,
-            // 'Access-Control-Allow-Origin': '*',
-            // 'CF-RAY': '2eae8e7c5ca75a68-BOS',
-            Authorization: 'Bearer ckMZIuDpxq3hQD-cyGk3Hf0WlK2Nx_iA-TttNy1Yu37TKWbHswUIQ2NfNkgLOnRd'
-        }
-    }).then((res, err) => {
-        var url = res.data.response.hits[0].result.url
-        console.log(url);
-        return url;
-    })
-}
-   getLyrics() {
-    var lyric_url = this.getGeniusURL(this.props.song);
-    Exec.exec('python3 genius.py ' + lyric_url, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`exec error: ${error}`);
-            return;
-        }
-        console.log(`stdout: ${stdout}`);
-        return stdout;
-        //   console.log(`stdout: ${stdout}`);
-        //   console.log(`stderr: ${stderr}`);
-    });
-};
 
-// componentWillReceiveProps(nextProps){
 
-// }
+    searchString() {
+
+        const urban_url = 'https://mashape-community-urban-dictionary.p.mashape.com/define';
+        Axios.get(urban_url, {
+            params: {
+                term: this.state.searchInput
+            },
+            headers: {
+                'X-Mashape-Key': '9I0xZLsiaamshNC9LtXwk9OnmzB7p1OBEJrjsnVXrB5bUg6Qhm'
+            }
+        }).then((res, err) => {
+            let definition = res.data.list[0].definition;
+            let example = res.data.list[0].example;
+            
+            this.setState({example: example, definition: definition});
+
+        })}
 
     render() {
         return(
@@ -88,10 +76,13 @@ class LyricsContainer extends React.Component {
                             </a>
                         </p>
                         <div className="SearchBar">
-                            <input type="text1" />
+                            <input type="text1" value={this.state.searchInput} onChange={(event) => {this.setState({searchInput: event.target.value})}} />
                         </div>
+                        <button onClick={this.searchString.bind(this)}>Search</button>
                         <div className="definition">
-                            {this}
+                            {this.state.definition}
+                            <br />
+                            {this.state.example}
                         </div>
                     </div>
                 </div>
