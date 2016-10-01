@@ -9,7 +9,7 @@ function getTrackTest(query){
 function getTrack(query){
     Axios.get(test2,{
         params: {
-            q:"Sorry",
+            q:query,
             type:'track',
             limit:1
         }
@@ -34,6 +34,6 @@ function getTrack(query){
 
 }
 
-getTrack(1);
+getTrack("Sorry");
 //getTrack2(2); 
 
