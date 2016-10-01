@@ -20,7 +20,11 @@ class Genius:
         for item in message.split('\n'):
             if (bad in item):
                 strip = (item.strip()[0:91])
-        print(message.replace(strip,'\n'))
+        message = message.replace(strip, '\n')
+        message = message.replace('\n', '<br>')
+        message = '<p>' + message + '</p>'
+        print(message)
+
 
 
 

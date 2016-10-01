@@ -1,5 +1,5 @@
 var Axios = require('axios')
-// const exec = require('child_process').exec;
+const exec = require('child_process').exec;
 var test = "https://api.spotify.com/v1/search?q=Sorry&type=track&limit=1";
 
 function getUrbanDefine(query) {
@@ -18,27 +18,18 @@ function getUrbanDefine(query) {
         return object;
     })}
 
-function getGeniusURL(query) {
-    var api = 'https://api.genius.com/search';
-    Axios.get(api, {
-        params: {
-            q: query
-        },
-        headers: {
-            'Access-Control-Allow-Credentials': false,
-            'Access-Control-Allow-Origin': '*',
-            'CF-RAY': '2eae8e7c5ca75a68-BOS',
-            Authorization: 'Bearer ckMZIuDpxq3hQD-cyGk3Hf0WlK2Nx_iA-TttNy1Yu37TKWbHswUIQ2NfNkgLOnRd'
-        }
-    }).then((res, err) => {
-        var url = res.data.response.hits[0].result.url
-        console.log(url);
-        return url;
-    })
+function getGeniusURL(artist_name, song_name) {
+    artist = artist_name.replace(/\s/g, '-');
+    song = song_name.replace(/\s/g, '-');
+    var url = 'http://genius.com/' + artist + '-' + song_name + '-lyrics';
+    console.log(artist);
+    console.log(song);
+    console.log(url);
+    return url;
 }
 
 function getLyrics(lyric_url) {
-    Exec.exec('python3 genius.py ' + lyric_url, (error, stdout, stderr) => {
+    exec('python3 genius.py ' + lyric_url, (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`);
             return;
@@ -99,10 +90,10 @@ function getWikiDefine(query) {
 
     });
 }
-getUrbanDefine('Swag');
+//getUrbanDefine('Swag');
 //getGeniusURL('Sorry');
 
 //getLyrics('http://genius.com/Beyonce-sorry-lyrics');
-//getTrack("Sorry");
+getTrack("Sorry");
 // getWikiDefine(1);
 //getTrack2(2);
