@@ -10,7 +10,9 @@ class AppContainer extends React.Component {
         return(
             <div className="row containerSize">
                 <div className="col-md-6"><MusicPlayerContainer /></div>
-                <div className="col-md-6 screen2"></div>
+                <div className="col-md-6 screen2">
+                    <LyricsContainer />
+                </div>
             </div>
         );
     }
