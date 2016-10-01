@@ -435,7 +435,7 @@ input[type="text"] {
 /*input[type="text"]:focus:hover {
   border-bottom: 1px solid #BBB;
 }*/
-input { font-family: 'FontAwesome'; }
+form > input { font-family: 'FontAwesome'; }
 input[type="text"]:focus {
   /*width: 370px;
   height: 29px;
@@ -477,12 +477,12 @@ input[type="submit"] {
   display: inline-block;
   color:red;
   float: right;
-  background: url(./search.png) center center no-repeat;
-  text-indent: -10000px;
-  /*background: transparent;*/
+  /*background: url(./search.png) center center no-repeat;
+  text-indent: -10000px;*/
+  background: transparent;
   border: none;
   position: absolute;
-  top: 4px;
+  top: 1px;
   right: -15px;
   z-index: 2;
   cursor: pointer;

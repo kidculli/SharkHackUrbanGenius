@@ -23,7 +23,7 @@ class SearchBar extends Component{
               <input 
                  value={this.state.term} onChange={ (event) => this.onInputChange(event.target.value) }
                  id="search" name="search" type="text" placeholder="Search..." />
-              <input id="search_submit" value="&#61447;" type="submit" />
+              <input id="search_submit" value="&#xf002;" type="submit" />
             </form>
           
           </div>
