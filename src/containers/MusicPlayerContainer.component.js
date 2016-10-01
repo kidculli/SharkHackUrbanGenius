@@ -127,21 +127,15 @@ class MusicPlayerContainer extends React.Component {
 
   render () {
     const scotchStyle = {
-      width: '500px',
-      height: '500px',
-      backgroundImage: `linear-gradient(
-      rgba(0, 0, 0, 0.7),
-      rgba(0, 0, 0, 0.7)
-    ),   url(${this.xlArtwork(this.state.track.artwork_url)})`
+      width: '360px',
+      height: '500px'
     }
     return (
-      <div className="scotch_music" style={scotchStyle}>
-        <Search
-          clientId={this.state.client_id}
-          autoCompleteValue={this.state.autoCompleteValue}
-          tracks={this.state.tracks}
-          handleSelect={this.handleSelect.bind(this)}
-          handleChange={this.handleChange.bind(this)}/>
+      <div className="screen" style={scotchStyle}>
+        <Search />
+        <div className="coverImage">
+          <img className="coverImage" src={this.xlArtwork(this.state.track.artwork_url)} />
+        </div>
         <Details
           title={this.state.track.title}/>
         <Sound
