@@ -31,20 +31,29 @@
 .screen {
     background-color: #fff;
     padding: 0;
-    height: 650px;
-    width: 366px;
+    height: 600px;
     position: absolute;
-    left: 30%;
+    /*left: 30%;*/
     top: 0;
-    transform: translate(-30%, 0);
+    /*transform: translate(-30%, 0);*/
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    margin: 30px 0;
+}
+.screen2 {
+    background-color: #fff;
+    padding: 0;
+    height: 600px;
+    position: absolute;
+    top: 0;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
     overflow: hidden;
     margin: 30px 0;
 }
 .coverImage {
     background-size: cover;
-    width: 366px;
-    height: 366px;
+    width: 420px;
+    height: 420px;
     padding: 0;
     margin: 0;
     position: block;
@@ -98,4 +107,30 @@
     color: black;
     cursor: pointer;
     transition: all 0.15s linear;
+}
+progress {
+    margin-left: 30px;
+    background: #555;
+    color: #555;
+    display: inline-block;
+    width: 300px;
+    height: 6px;
+}
+progress[value]::-webkit-progress-value {
+  background-color: beige;
+}
+.start_point {
+  margin-left: 10px;
+  font-size: 12px;
+}
+.end_point {
+  margin-left: 270px;
+  font-size: 12px;
+}
+.color {
+  background-color: green;
+}
+.containerSize {
+  width: 900px;
+  left: 30%;
 }
