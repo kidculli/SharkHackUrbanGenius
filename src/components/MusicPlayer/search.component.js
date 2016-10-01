@@ -36,7 +36,7 @@ class SearchBar extends Component{
     this.setState({term: term});
 
     // Remember this is the from the parent component
-    //this.props.onSearchTermChange(term)
+    this.props.onSearchTermChange(term)
   }
   clickFind() {
     //this.props.onSearchTermChange(this.state.term);
