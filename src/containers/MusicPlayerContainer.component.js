@@ -17,7 +17,7 @@ class MusicPlayerContainer extends React.Component {
      super(props);
      this.client_id = '2f98992c40b8edf17423d93bda2e04ab';
      this.state = {
-       track: {stream_url: 'https://p.scdn.co/mp3-preview/9a744ca0248dda247a682b6703b62c36a9127bbb', title: 'Sorry', artwork_url: 'https://i.scdn.co/image/8b47495ce0c4a341f7196f70bcf4361e6257c1a0', artist_name: 'Justin Bieber'},
+       track: {stream_url: '', title: 'Sorry', artwork_url: '', artist_name: ''},
        playStatus: Sound.status.STOPPED,
        elapsed: '00:00',
        total: '00:00',
@@ -28,15 +28,10 @@ class MusicPlayerContainer extends React.Component {
      };
    }
 
-//  co
    componentWillMount(){
-     this.getTrack();
+     let term =  this.state.term;
+     this.getTrack(term);
    }
-
-  prepareUrl(url) {
-    //Attach client id to stream url
-    return `${url}?client_id=${this.client_id}`
-  }
 
   xlArtwork(url){
     return url.replace(/large/, 't500x500');
@@ -70,23 +65,6 @@ class MusicPlayerContainer extends React.Component {
     this.setState({ autoCompleteValue: value, track: item });
   }
 
-  // handleChange(event, value){
-  //   // Update input box
-  //   this.setState({autoCompleteValue: event.target.value});
-  //   let _this = this;
-  //   //Search for song with entered value
-  //   Axios.get(`https://api.soundcloud.com/tracks?client_id=${this.client_id}&q=${value}`)
-  //     .then(function (response) {
-  //       // Update track state
-  //       _this.setState({tracks: response.data});
-  //       console.log(response);
-  //     })
-  //     .catch(function (err) {
-  //       console.log(err);
-  //     });
-  // }
-
-
   formatMilliseconds(milliseconds) {
      var hours = Math.floor(milliseconds / 3600000);
      milliseconds = milliseconds % 3600000;
@@ -106,34 +84,24 @@ class MusicPlayerContainer extends React.Component {
    }
 
   handleSongFinished () {
-    this.randomTrack();
+    let term  = this.state.term;
+    this.getTrack(term);
    }
 
-  randomTrack () {
-    let _this = this;
-    //Request for a playlist via Soundcloud using a client id
-    Axios.get(`https://api.soundcloud.com/playlists/209262931?client_id=${this.client_id}`)
-      .then(function (response) {
-        // Store the length of the tracks
-        const trackLength = response.data.tracks.length;
-        // Pick a random number
-        const randomNumber = Math.floor((Math.random() * trackLength) + 1);
-        //Set the track state with a random track from the playlist
-        _this.setState({track: response.data.tracks[randomNumber]});
-      })
-      .catch(function (err) {
-        //If something goes wrong, let us know
-        console.log(err);
-      });
-   }
-  getTrack(){
-        Axios.get(api_url,{
-            params: {
-                q: this.state.term,
-                type:'track',
-                limit:1
-            }
-        }).then(res => {
+
+  getTrack(term){
+
+    if(term === ''){
+      term = 'Closer';
+    }
+
+    Axios.get(api_url,{
+        params: {
+            q: term,
+            type:'track',
+            limit:1
+        }
+      }).then(res => {
             // console.log(console.log(res.data.tracks.items[0]));
             let res_data = res.data.tracks.items[0];
             var artist =  res_data.artists[0].name;
@@ -148,15 +116,9 @@ class MusicPlayerContainer extends React.Component {
       }
 
       searchTerm(term){
-
-        if (term == ''){
-          this.setState({term: 'Closer'})
-        }else{
-          this.setState({term: term});
-        }
-        console.log("term", this.state.term);
-        this.getTrack();
-
+        this.setState({term: term});
+        console.log('term: ', this.state.term);
+        this.getTrack(term);
       }
 
   render () {
@@ -184,12 +146,12 @@ class MusicPlayerContainer extends React.Component {
           playStatus={this.state.playStatus}
           forward={this.forward.bind(this)}
           backward={this.backward.bind(this)}
-          random={this.getTrack.bind(this)}/>
+        />
         <Progress
           elapsed={this.state.elapsed}
           total={this.state.total}
           position={this.state.position}/>
-        
+
       </div>
     );
   }
