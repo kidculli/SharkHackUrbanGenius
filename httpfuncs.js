@@ -2,6 +2,22 @@ var Axios = require('axios')
 const exec = require('child_process').exec;
 var test = "https://api.spotify.com/v1/search?q=Sorry&type=track&limit=1";
 
+function getUrbanDefine(query) {
+    var urban_url = 'https://mashape-community-urban-dictionary.p.mashape.com/define';
+    Axios.get(urban_url, {
+        params: {
+            term: query
+        },
+        headers: {
+            'X-Mashape-Key': '9I0xZLsiaamshNC9LtXwk9OnmzB7p1OBEJrjsnVXrB5bUg6Qhm'
+        }
+    }).then((res, err) => {
+        var definition = res.data.list[0].definition;
+        var example = res.data.list[0].example;
+        object = {definition, example};
+        return object;
+    })}
+
 function getGeniusURL(query) {
     var api = 'https://api.genius.com/search';
     Axios.get(api, {
@@ -17,7 +33,7 @@ function getGeniusURL(query) {
     }).then((res, err) => {
         var url = res.data.response.hits[0].result.url
         console.log(url);
-        return url; 
+        return url;
     })
 }
 
@@ -83,8 +99,8 @@ function getWikiDefine(query) {
 
     });
 }
-
-getGeniusURL('Sorry');
+getUrbanDefine('Swag');
+//getGeniusURL('Sorry');
 
 //getLyrics('http://genius.com/Beyonce-sorry-lyrics');
 //getTrack("Sorry");
