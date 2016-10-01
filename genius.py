@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import urllib.request
+import sys
 
 class Genius:
 
@@ -17,9 +18,14 @@ class Genius:
         lyrics = self.soup.find('div','song_body-lyrics')
         print(lyrics.get_text())
 
+
+song = sys.stdin.read()
+
+print song
+
 lyrics = Genius()
 
-if (!(URL.find("http"))):
+if (not URL.find("http")):
     lyrics.get_URL('http://' + URL)
 else:
     lyrics.get_URL(URL)
