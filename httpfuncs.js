@@ -2,19 +2,37 @@ var Axios = require('axios')
 const exec = require('child_process').exec;
 var test = "https://api.spotify.com/v1/search?q=Sorry&type=track&limit=1";
 
+function getGeniusURL(query) {
+    var api = 'https://api.genius.com/search';
+    Axios.get(api, {
+        params: {
+            q: query
+        },
+        headers: {
+            'Access-Control-Allow-Credentials': false,
+            'Access-Control-Allow-Origin': '*',
+            'CF-RAY': '2eae8e7c5ca75a68-BOS',
+            Authorization: 'Bearer ckMZIuDpxq3hQD-cyGk3Hf0WlK2Nx_iA-TttNy1Yu37TKWbHswUIQ2NfNkgLOnRd'
+        }
+    }).then((res, err) => {
+        var url = res.data.response.hits[0].result.url
+        console.log(url);
+        return url; 
+    })
+}
 
 function getLyrics(lyric_url) {
     exec('python3 genius.py ' + lyric_url, (error, stdout, stderr) => {
-  if (error) {
-    console.error(`exec error: ${error}`);
-    return;
-  }
-  console.log(`stdout: ${stdout}`);
-  return stdout;
-//   console.log(`stdout: ${stdout}`);
-//   console.log(`stderr: ${stderr}`);
-});
-    };
+        if (error) {
+            console.error(`exec error: ${error}`);
+            return;
+        }
+        console.log(`stdout: ${stdout}`);
+        return stdout;
+        //   console.log(`stdout: ${stdout}`);
+        //   console.log(`stderr: ${stderr}`);
+    });
+};
 
 // function getTrackTest(query) {
 //     Axios.get(test).then(res => { console.log(res.data.tracks.items[0]) });
@@ -66,7 +84,9 @@ function getWikiDefine(query) {
     });
 }
 
-getLyrics('http://genius.com/Beyonce-sorry-lyrics');
+getGeniusURL('Sorry');
+
+//getLyrics('http://genius.com/Beyonce-sorry-lyrics');
 //getTrack("Sorry");
 // getWikiDefine(1);
 //getTrack2(2);
