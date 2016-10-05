@@ -9,6 +9,7 @@ import Details from '../components/MusicPlayer/detail.component';
 import Player from '../components/MusicPlayer/player.component';
 import Progress from '../components/MusicPlayer/progress.component';
 import Search from '../components/MusicPlayer/search.component';
+const api_url = "https://api.spotify.com/v1/search";
 
 class MusicPlayerContainer extends React.Component {
 
@@ -16,25 +17,21 @@ class MusicPlayerContainer extends React.Component {
      super(props);
      this.client_id = '2f98992c40b8edf17423d93bda2e04ab';
      this.state = {
-       track: {stream_url: '', title: '', artwork_url: ''},
-       tracks: [],
+       track: {stream_url: '', title: 'Sorry', artwork_url: '', artist_name: ''},
        playStatus: Sound.status.STOPPED,
        elapsed: '00:00',
        total: '00:00',
        position: 0,
        playFromPosition: 0,
-       autoCompleteValue: ''
+       autoCompleteValue: '',
+       term: 'Know yourself'
      };
    }
 
- componentDidMount() {
-    this.randomTrack();
-  }
-
-  prepareUrl(url) {
-    //Attach client id to stream url
-    return `${url}?client_id=${this.client_id}`
-  }
+   componentWillMount(){
+     let term =  this.state.term;
+     this.getTrack(term);
+   }
 
   xlArtwork(url){
     return url.replace(/large/, 't500x500');
@@ -68,23 +65,6 @@ class MusicPlayerContainer extends React.Component {
     this.setState({ autoCompleteValue: value, track: item });
   }
 
-  handleChange(event, value){
-    // Update input box
-    this.setState({autoCompleteValue: event.target.value});
-    let _this = this;
-    //Search for song with entered value
-    Axios.get(`https://api.soundcloud.com/tracks?client_id=${this.client_id}&q=${value}`)
-      .then(function (response) {
-        // Update track state
-        _this.setState({tracks: response.data});
-        console.log(response);
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
-  }
-
-
   formatMilliseconds(milliseconds) {
      var hours = Math.floor(milliseconds / 3600000);
      milliseconds = milliseconds % 3600000;
@@ -104,42 +84,64 @@ class MusicPlayerContainer extends React.Component {
    }
 
   handleSongFinished () {
-    this.randomTrack();
+    let term  = this.state.term;
+    this.getTrack(term);
    }
 
-  randomTrack () {
-    let _this = this;
-    //Request for a playlist via Soundcloud using a client id
-    Axios.get(`https://api.soundcloud.com/playlists/209262931?client_id=${this.client_id}`)
-      .then(function (response) {
-        // Store the length of the tracks
-        const trackLength = response.data.tracks.length;
-        // Pick a random number
-        const randomNumber = Math.floor((Math.random() * trackLength) + 1);
-        //Set the track state with a random track from the playlist
-        _this.setState({track: response.data.tracks[randomNumber]});
-      })
-      .catch(function (err) {
-        //If something goes wrong, let us know
-        console.log(err);
-      });
-   }
+
+  getTrack(term){
+
+    if(term === ''){
+      term = 'Know yourself';
+    }
+
+    Axios.get(api_url,{
+        params: {
+            q: term,
+            type:'track',
+            limit:1
+        }
+      }).then(res => {
+            // console.log(console.log(res.data.tracks.items[0]));
+            let res_data = res.data.tracks.items[0];
+            var artist =  res_data.artists[0].name;
+            let track_name = res_data.name;
+            let preview_url = res_data.preview_url;
+            let img_url = res_data.album.images[0].url;
+            this.setState({track: {stream_url: preview_url,
+                                   title: track_name,
+                                   artwork_url: img_url,
+                                   artist_name: artist}});
+       }).catch( (error) => console.log('error', error));
+      }
+
+      searchTerm(term){
+        if (term == ''){
+          this.setState({term: 'Know yourself'})
+        }else{
+          this.setState({term: term});
+        }
+        this.props.callback(this.state.term);
+        console.log("term", this.state.term);
+        this.getTrack(term);
+      }
 
   render () {
     const scotchStyle = {
       width: '360px',
-      height: '500px'
+      height: '550px'
     }
     return (
-      <div className="screen" style={scotchStyle}>
-        <Search />
-        <div className="coverImage">
+      <div className="screen">
+        <Search onEnterTermChange={this.getTrack.bind(this)}/>
+        <div>
           <img className="coverImage" src={this.xlArtwork(this.state.track.artwork_url)} />
         </div>
+        <br />
         <Details
           title={this.state.track.title}/>
         <Sound
-           url={this.prepareUrl(this.state.track.stream_url)}
+           url={this.state.track.stream_url}
            playStatus={this.state.playStatus}
            onPlaying={this.handleSongPlaying.bind(this)}
            playFromPosition={this.state.playFromPosition}
@@ -150,12 +152,12 @@ class MusicPlayerContainer extends React.Component {
           playStatus={this.state.playStatus}
           forward={this.forward.bind(this)}
           backward={this.backward.bind(this)}
-          random={this.randomTrack.bind(this)}/>
+        />
         <Progress
           elapsed={this.state.elapsed}
           total={this.state.total}
           position={this.state.position}/>
-        
+
       </div>
     );
   }
