@@ -112,6 +112,7 @@ class MusicPlayerContainer extends React.Component {
                                    title: track_name,
                                    artwork_url: img_url,
                                    artist_name: artist}});
+            this.props.callback(this.state.track);
        }).catch( (error) => console.log('error', error));
       }
 
