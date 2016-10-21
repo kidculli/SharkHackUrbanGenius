@@ -21,7 +21,8 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    contentBase: './'
+    contentBase: './',
+    headers: {"Access-Control-Allow-Origin": "*"}
   },
   externals:{
     child_process: 'Exec'
