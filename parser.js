@@ -18,8 +18,8 @@ function getLyrics(html){
     // var content = $('.song_body-lyrics').contents();
   
     var content = $('.lyrics').contents();
-      printText(content);
-      return content;
+      //printText(content);
+      return content.text();
     // for (i=0; i< content.length; i++)
     // {   
     //     while(true){
@@ -52,25 +52,25 @@ app.all('/*', function (req, res, next) {
     next();
 });
 
-app.get('/lyric/:song', function (req, res) {
-    var song = req.params.song;
-    console.log(song);
-    res.send(song);
+// app.get('/lyric/:song', function (req, res) {
+//     var song = req.params.song;
+//     console.log(song);
+//     res.send(song);
 
-    // Axios.get(url).then(res => {
-    //     //console.log(res.data);
-    //     var $ = cheerio.load(res.data);
-    //     return $('song_body-lyric');
-    // })
+//     // Axios.get(url).then(res => {
+//     //     //console.log(res.data);
+//     //     var $ = cheerio.load(res.data);
+//     //     return $('song_body-lyric');
+//     // })
 
-});
+// });
 
 app.get('/lyrics',function (req, res) { 
     var lyric = req.query.lyric;
     console.log(lyric);
     Axios.get(lyric).then(response => {
-        // console.log(res.data);
         var result = getLyrics(response.data);
+        result = result.replace(/googletag.*;/g,'');
         res.send(result);
     }).catch(err => {
         console.log(error);

@@ -34,8 +34,8 @@ class AppContainer extends React.Component {
                     lyric: this.state.genius
                 }
             }).then(res => {
-                console.log("returned");
-                console.log(res);
+                console.log(res.data);
+                this.setState({lyrics:res.data});
             });
         // Axios.get(this.state.genius).then(res => {
         //     console.log(res.status);
@@ -73,7 +73,7 @@ class AppContainer extends React.Component {
             <div className="row containerSize">
                 <div className="col-md-6"><MusicPlayerContainer callback={this.onChildChanged.bind(this)} /></div>
                 <div className="col-md-6 screen2">
-                    <LyricsContainer song={this.state.song} />
+                    <LyricsContainer songInfo={this.state.song} lyrics={this.state.lyrics} />
                 </div>
             </div>
         );
