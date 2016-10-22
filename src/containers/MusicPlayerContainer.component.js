@@ -85,7 +85,7 @@ class MusicPlayerContainer extends React.Component {
 
   handleSongFinished () {
     let term  = this.state.term;
-    this.getTrack(term);
+    // this.getTrack(term);
    }
 
 
