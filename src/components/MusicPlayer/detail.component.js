@@ -4,7 +4,7 @@ class Details extends React.Component {
   
   render(){
     return(
-      <div className="details">{this.props.title}</div>
+      <div className="details">{this.props.artist} &nbsp; - &nbsp; {this.props.title}</div>
     )
   }
 

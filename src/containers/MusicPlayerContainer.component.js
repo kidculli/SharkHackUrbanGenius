@@ -140,7 +140,8 @@ class MusicPlayerContainer extends React.Component {
         </div>
         <br />
         <Details
-          title={this.state.track.title}/>
+          title={this.state.track.title}
+          artist={this.state.track.artist_name}/>
         <Sound
            url={this.state.track.stream_url}
            playStatus={this.state.playStatus}

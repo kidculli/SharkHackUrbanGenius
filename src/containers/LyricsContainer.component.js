@@ -41,7 +41,7 @@ class LyricsContainer extends React.Component {
             <div id="lauzcont">
                 <div className="ovcont">
                     <div className="mainwrite">
-                        <div className="lauzti">{this.props.songInfo.title}</div>
+                        <div type="upperc" className="lauzti">{this.props.songInfo.title} by {this.props.songInfo.artist_name}</div>
 
                         <p><br /></p>
                         <center dangerouslySetInnerHTML={{__html: this.props.lyrics}}>
@@ -52,9 +52,7 @@ class LyricsContainer extends React.Component {
                     <div className="mainwrite1">
                         <div className="lauzti1">alternative outlook</div>
                         <p type="upperc">
-                            <a href="http://shine.b1.jcink.com/index.php?showtopic=1932" rel="nofollow" target="_blank">
                                 URBAN DICTIONARY
-                            </a>
                         </p>
                         <div className="SearchBar">
                             <input type="text1" value={this.state.searchInput} onChange={(event) => {this.setState({searchInput: event.target.value})}} />
