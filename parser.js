@@ -15,11 +15,14 @@ function getLyrics(html){
     // })
     console.log('called');
     var $ = cheerio.load(html);
+     $('script').remove();
+     $('a').removeAttr('href');
+     return $('.lyrics').html();
     // var content = $('.song_body-lyrics').contents();
   
-    var content = $('.lyrics').contents();
-      //printText(content);
-      return content.text();
+    // var content = $('.lyrics').contents();
+    //   //printText(content);
+    //   return content.text();
     // for (i=0; i< content.length; i++)
     // {   
     //     while(true){
@@ -70,7 +73,7 @@ app.get('/lyrics',function (req, res) {
     console.log(lyric);
     Axios.get(lyric).then(response => {
         var result = getLyrics(response.data);
-        result = result.replace(/googletag.*;/g,'');
+        // result = result.replace(/googletag.*;/g,'');
         res.send(result);
     }).catch(err => {
         console.log(error);
